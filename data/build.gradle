@@ -1,13 +1,13 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion rootProject.ext.compileSdkVersion
 
 
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 26
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -25,10 +25,33 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':domain')
+    def appDependencies = rootProject.ext.appDependencies
+    def testDependencies = rootProject.ext.testDependencies
 
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    api appDependencies.okHttp
+    api appDependencies.okHttpInterceptor
+    api appDependencies.retrofit2
+    api appDependencies.retrofitRxAdapter
+    api appDependencies.retrofitConverter
+
+    api appDependencies.roomRuntime
+    implementation appDependencies.roomRxJava
+
+    implementation appDependencies.dagger2
+    annotationProcessor appDependencies.dagger2Compiler
+
+    annotationProcessor appDependencies.roomCompiler
+
+    compileOnly appDependencies.autoValue
+    annotationProcessor appDependencies.autoValue
+
+    compileOnly appDependencies.autoValueGson
+    annotationProcessor appDependencies.autoValueGson
+
+    // Unit testing
+    testImplementation testDependencies.junit
+    testImplementation testDependencies.assertj
+    testImplementation testDependencies.mockito
 }

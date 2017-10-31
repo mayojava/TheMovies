@@ -1,8 +1,33 @@
 apply plugin: 'java-library'
+configurations {
+    provided
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    def appDependencies = rootProject.ext.appDependencies
+    def testDependencies = rootProject.ext.testDependencies
+
+    api appDependencies.options
+    api appDependencies.rxJava2
+
+    api appDependencies.gson
+
+    compileOnly appDependencies.autoValue
+    provided appDependencies.autoValue
+
+    compileOnly appDependencies.autoValueGson
+    provided appDependencies.autoValueGson
+
+    implementation appDependencies.dagger2
+    provided appDependencies.dagger2Compiler
+
+    compileOnly appDependencies.javaxAnnotation
+    testImplementation testDependencies.junit
+    testImplementation testDependencies.assertj
+    testImplementation testDependencies.mockito
 }
 
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
