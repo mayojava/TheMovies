@@ -1,4 +1,4 @@
-package com.mobile.app.themovies
+package com.mobile.app.themovies.domain
 
 import io.reactivex.Scheduler
 

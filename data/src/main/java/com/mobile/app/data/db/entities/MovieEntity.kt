@@ -1,6 +1,11 @@
-package com.mobile.app.themovies.entity
+package com.mobile.app.data.db.entities
 
- data class Movie(
+import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
+
+@Entity(tableName = "movies")
+data class MovieEntity(
+        @PrimaryKey
         val id: Int,
         val vote_count: Int,
         val video: Boolean,

@@ -1,4 +1,4 @@
-package com.mobile.app.themovies.interactor
+package com.mobile.app.themovies.domain.interactor
 
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.subscribers.DisposableSubscriber

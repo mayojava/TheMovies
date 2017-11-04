@@ -1,5 +1,6 @@
 package com.mobile.app.themovies
 
+import com.mobile.app.themovies.domain.ISchedulersFactory
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

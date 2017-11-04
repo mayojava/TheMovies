@@ -11,7 +11,7 @@ interface MoviesService {
 
     @GET("movie/popular")
     fun getMovies(
-            @Query("page") page: String
+            @Query("page") page: Int
     ): Single<List<PopularMoviesModel>>
 
     @GET("movie/{movie_id}")

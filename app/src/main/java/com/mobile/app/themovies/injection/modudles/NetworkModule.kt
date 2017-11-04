@@ -5,7 +5,7 @@ import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.mobile.app.themovies.BuildConfig
-import com.mobile.app.themovies.exception.NoNetworkException
+import com.mobile.app.themovies.domain.exception.NoNetworkException
 import com.mobile.app.themovies.util.NetworkMonitor
 import dagger.Module
 import dagger.Provides

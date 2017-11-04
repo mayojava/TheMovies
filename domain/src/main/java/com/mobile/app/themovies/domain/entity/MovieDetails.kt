@@ -1,10 +1,10 @@
-package com.mobile.app.themovies.entity
+package com.mobile.app.themovies.domain.entity
 
 data class MovieDetails (
         val adult: Boolean,
         val backdrop_path: String,
         val budget: Long,
-        val genres: List<Genres>,
+        val genres: String,
         val homepage: String,
         val id: Long,
         val imdb_id: String,

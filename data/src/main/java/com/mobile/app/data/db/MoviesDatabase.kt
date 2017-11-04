@@ -5,9 +5,9 @@ import android.arch.persistence.room.RoomDatabase
 import com.mobile.app.data.db.dao.MovieDetailsDao
 import com.mobile.app.data.db.dao.MoviesDao
 import com.mobile.app.data.db.entities.MovieDetailsEntity
-import com.mobile.app.data.db.entities.MoviesEntity
+import com.mobile.app.data.db.entities.MovieEntity
 
-@Database(entities = arrayOf(MoviesEntity::class, MovieDetailsEntity::class), version = 1)
+@Database(entities = arrayOf(MovieEntity::class, MovieDetailsEntity::class), version = 1)
 abstract class MoviesDatabase: RoomDatabase() {
     abstract fun moviesDao(): MoviesDao
     abstract fun moviesDetailsDao(): MovieDetailsDao

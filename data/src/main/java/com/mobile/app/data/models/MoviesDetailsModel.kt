@@ -1,6 +1,6 @@
 package com.mobile.app.data.models
 
-import com.mobile.app.themovies.entity.Genres
+import com.mobile.app.themovies.domain.entity.Genres
 
 data class MoviesDetailsModel(
         val adult: Boolean,

@@ -5,6 +5,9 @@ import android.content.Context
 import com.mobile.app.data.db.MoviesDatabase
 import com.mobile.app.data.db.dao.MovieDetailsDao
 import com.mobile.app.data.db.dao.MoviesDao
+import com.mobile.app.data.db.entities.MovieEntity
+import com.mobile.app.data.db.store.MoviesReactiveStore
+import com.mobile.app.data.store.ReactiveStore
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -25,7 +28,13 @@ class DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideesMoviesDetailsDao(database: MoviesDatabase): MovieDetailsDao {
+    fun providesMoviesDetailsDao(database: MoviesDatabase): MovieDetailsDao {
         return database.moviesDetailsDao()
+    }
+
+    @Provides
+    @Singleton
+    fun providesMoviesReactiveStore(store: MoviesReactiveStore): ReactiveStore<MovieEntity> {
+        return store
     }
 }

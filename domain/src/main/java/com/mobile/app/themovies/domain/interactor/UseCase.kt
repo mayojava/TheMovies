@@ -1,4 +1,4 @@
-package com.mobile.app.themovies.interactor
+package com.mobile.app.themovies.domain.interactor
 
 import io.reactivex.Completable
 import io.reactivex.Flowable
