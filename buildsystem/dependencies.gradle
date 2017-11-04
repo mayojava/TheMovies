@@ -7,6 +7,7 @@ ext {
     rxJava2 = '2.1.0'
     rxAndroid = '2.0.1'
     archLifecycle =  '1.0.3'
+    archCompRc1 = '1.0.0-rc1'
     supportLibrary = '27.0.0'
     constraintLayout = '1.0.2'
     dagger2 = '2.12'
@@ -53,9 +54,9 @@ ext {
             roomRxJava                  : "android.arch.persistence.room:rxjava2:${roomVersion}",
 
             archLifecycleRuntime        : "android.arch.lifecycle:runtime:${archLifecycle}",
-            archLifecycleExtensions     : "android.arch.lifecycle:extensions:${archLifecycle}",
-            archLifecycleReactiveStreams: "android.arch.lifecycle:reactivestreams:${archLifecycle}",
-            archLifecycleCompiler       : "android.arch.lifecycle:compiler:${archLifecycle}",
+            archLifecycleExtensions     : "android.arch.lifecycle:extensions:${archCompRc1}",
+            archLifecycleReactiveStreams: "android.arch.lifecycle:reactivestreams:${archCompRc1}",
+            archLifecycleCompiler       : "android.arch.lifecycle:compiler:${archCompRc1}",
 
             options                     : "com.github.tomaszpolanski:options:${options}",
 
@@ -77,7 +78,7 @@ ext {
             junit               : "junit:junit:${junit}",
             assertj             : "org.assertj:assertj-core:${assertJ}",
             mockito             : "org.mockito:mockito-core:${mockito}",
-            archTest            : "android.arch.core:core-testing:${archLifecycle}",
+            archTest            : "android.arch.core:core-testing:${archCompRc1}",
             espressoCore        : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
             espressoIntents     : "com.android.support.test.espresso:espresso-intents:${espressoVersion}",
             espressoContrib     : "com.android.support.test.espresso:espresso-contrib:${espressoVersion}",
