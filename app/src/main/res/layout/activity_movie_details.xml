@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:titleTextColor="#ffffff"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/divider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.45"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guide_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guide_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp"/>
+
+    <ImageView
+        android:id="@+id/back_drop_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="@id/guide_left"
+        app:layout_constraintRight_toRightOf="@id/guide_right"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toTopOf="@id/divider"
+        android:layout_marginTop="8dp"
+        android:scaleType="centerCrop"/>
+
+    <!-- title label -->
+    <TextView
+        android:id="@+id/label_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/movie_title"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:paddingTop="16dp"
+        app:layout_constraintLeft_toLeftOf="@id/guide_left"
+        app:layout_constraintTop_toBottomOf="@id/divider"/>
+
+    <!-- title text -->
+    <TextView
+        android:id="@+id/text_view_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        app:layout_constraintLeft_toLeftOf="@id/guide_left"
+        app:layout_constraintRight_toRightOf="@id/guide_right"
+        app:layout_constraintTop_toBottomOf="@id/label_title"
+        tools:text="Spider man"/>
+
+    <!-- overview label -->
+    <TextView
+        android:id="@+id/label_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="@string/movie_description"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@id/guide_left"
+        app:layout_constraintTop_toBottomOf="@id/text_view_title"
+        android:layout_marginTop="12dp"/>
+
+    <!-- overview text -->
+    <TextView
+        android:id="@+id/text_view_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="5"
+        android:paddingTop="8dp"
+        android:minHeight="64dp"
+        android:lineSpacingExtra="4dp"
+        app:layout_constraintLeft_toLeftOf="@id/guide_left"
+        app:layout_constraintRight_toRightOf="@id/guide_right"
+        app:layout_constraintTop_toBottomOf="@id/label_description"
+        tools:text="Spider man 2 awesome movie"/>
+
+    <!-- label genres -->
+    <TextView
+        android:id="@+id/label_genres"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/movie_genres"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="12dp"
+        app:layout_constraintLeft_toLeftOf="@id/guide_left"
+        app:layout_constraintTop_toBottomOf="@id/text_view_description"/>
+
+    <!-- text movie genre -->
+    <TextView
+        android:id="@+id/text_view_movie_genre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="@id/guide_right"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintLeft_toRightOf="@id/label_genres"
+        app:layout_constraintTop_toBottomOf="@id/text_view_description"
+        app:layout_constraintBaseline_toBaselineOf="@id/label_genres"
+        tools:text="10"/>
+
+
+    <!-- label released date -->
+    <TextView
+        android:id="@+id/label_released_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/movie_released_date"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="12dp"
+        app:layout_constraintLeft_toLeftOf="@id/guide_left"
+        app:layout_constraintTop_toBottomOf="@id/text_view_movie_genre"/>
+
+    <!-- text released date -->
+    <TextView
+        android:id="@+id/text_view_released_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="@id/guide_right"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintLeft_toRightOf="@id/label_released_date"
+        app:layout_constraintTop_toBottomOf="@id/text_view_movie_genre"
+        app:layout_constraintBaseline_toBaselineOf="@id/label_released_date"
+        tools:text="10"/>
+
+    <!-- label vote average -->
+    <TextView
+        android:id="@+id/label_vote_average"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/movie_vote_average"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="12dp"
+        app:layout_constraintLeft_toLeftOf="@id/guide_left"
+        app:layout_constraintTop_toBottomOf="@id/text_view_released_date"/>
+
+    <!-- text vote average -->
+    <TextView
+        android:id="@+id/text_vote_average"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        app:layout_constraintLeft_toLeftOf="@id/guide_left"
+        app:layout_constraintRight_toRightOf="@id/guide_right"
+        app:layout_constraintTop_toBottomOf="@id/label_vote_average"
+        tools:text="Clark Kent, Damian Damien"/>
+
+
+</android.support.constraint.ConstraintLayout>

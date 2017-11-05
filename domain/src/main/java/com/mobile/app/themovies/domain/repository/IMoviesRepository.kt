@@ -10,5 +10,5 @@ interface IMoviesRepository {
     fun fetchMovies(): Completable
     fun getMoviesList(): Flowable<List<Movie>>
     fun fetchMoviesPaginated(page: Int): Single<List<Movie>>
-    fun getMovieDetails(id: Int): Single<MovieDetails>
+    fun getMovieDetails(id: Long): Single<MovieDetails>
 }

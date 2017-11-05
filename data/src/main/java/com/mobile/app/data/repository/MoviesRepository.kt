@@ -2,6 +2,7 @@ package com.mobile.app.data.repository
 
 import com.mobile.app.data.MoviesService
 import com.mobile.app.data.db.dao.MovieDetailsDao
+import com.mobile.app.data.db.entities.MovieDetailsEntity
 import com.mobile.app.data.db.entities.MovieEntity
 import com.mobile.app.data.mappers.Mapper
 import com.mobile.app.data.store.ReactiveStore
@@ -20,16 +21,11 @@ class MoviesRepository @Inject constructor(
         private val mapper: Mapper
 ): IMoviesRepository {
 
-    override fun getMovieDetails(id: Int): Single<MovieDetails> {
+    override fun getMovieDetails(id: Long): Single<MovieDetails> {
         return detailsDao.getMovieDetails(id)
-                .switchIfEmpty(Maybe.fromAction {
-                    moviesService.getMoveDetails(id)
-                            .map { mapper.toMovieDetailsEntity(it) }
-                            .doOnSuccess { detailsDao.saveMovieDetails(it) }
-                })
-                .flatMapSingle { it -> Single.just(it) }
+                .subscribeOn(schedulerFactory.computation())
+                .onErrorResumeNext { details(id) }
                 .map { mapper.toMovieDetails(it) }
-                .subscribeOn(schedulerFactory.io())
     }
 
     override fun fetchMovies(): Completable {
@@ -54,5 +50,12 @@ class MoviesRepository @Inject constructor(
                 .flatMapObservable { Observable.fromIterable(it.results) }
                 .map { mapper.toMovie(it) }
                 .toList()
+    }
+
+    private fun details(id: Long): Single<MovieDetailsEntity> {
+        return moviesService.getMoveDetails(id)
+                .map { mapper.toMovieDetailsEntity(it) }
+                .subscribeOn(schedulerFactory.io())
+                .doOnSuccess { detailsDao.saveMovieDetails(it) }
     }
 }

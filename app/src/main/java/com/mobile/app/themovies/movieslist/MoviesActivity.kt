@@ -3,12 +3,14 @@ package com.mobile.app.themovies.movieslist
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.View
 import android.widget.Toast
 import com.mobile.app.themovies.R
+import com.mobile.app.themovies.moviesdetails.MovieDetailsActivity
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
@@ -49,7 +51,15 @@ class MoviesActivity: AppCompatActivity() {
     private fun setupRecyclerView() {
         recycler_view_movies.layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
         recycler_view_movies.adapter = recyclerAdapter
-        recyclerAdapter.setItemClickListener { Toast.makeText(baseContext, "${it.title}", Toast.LENGTH_LONG).show() }
+        recyclerAdapter.setItemClickListener { showMovieDetails(it) }
+    }
+
+    private fun showMovieDetails(viewModel: MovieRowViewModel) {
+        val intent = Intent(this, MovieDetailsActivity::class.java)
+        intent.putExtra(MovieDetailsActivity.KEY_MOVIE_TITLE, viewModel.title)
+        intent.putExtra(MovieDetailsActivity.KEY_MOVIE_OVERVIEW, viewModel.overview)
+        intent.putExtra(MovieDetailsActivity.KEY_MOVIE_ID, viewModel.id)
+        startActivity(intent)
     }
 
     private fun setupToolbar() {

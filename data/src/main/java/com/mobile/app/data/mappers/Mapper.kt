@@ -16,7 +16,7 @@ class Mapper @Inject constructor(){
                 model.id, model.adult, model.backdrop_path,
                 model.budget, getGenresAsStrings(model.genres), model.homepage, model.imdb_id, model.original_title,
                 model.overview, model.poster_path, model.tagline, model.title,
-                model.revenue, model.released_date, model.runtime, model.status,
+                model.revenue, model.release_date, model.runtime, model.status,
                 model.vote_average, model.vote_count, model.popularity
         )
     }

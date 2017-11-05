@@ -16,7 +16,7 @@ data class MoviesDetailsModel(
         val tagline: String,
         val title: String,
         val revenue: Long,
-        val released_date: String,
+        val release_date: String,
         val runtime: Int,
         val status: String,
         val vote_average: Float,

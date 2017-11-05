@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">TheMovies</string>
     <string name="tool_bar_title_movies">Movies</string>
+    <string name="movie_title">Title</string>
+    <string name="movie_description">Overview</string>
+    <string name="movie_genres">Genres</string>
+    <string name="movie_released_date">Released Date</string>
+    <string name="movie_vote_average">Vote Average</string>
 </resources>

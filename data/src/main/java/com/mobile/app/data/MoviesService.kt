@@ -15,5 +15,5 @@ interface MoviesService {
     ): Single<ApiResponse>
 
     @GET("movie/{movie_id}")
-    fun getMoveDetails(@Path("movie_id") id: Int): Single<MoviesDetailsModel>
+    fun getMoveDetails(@Path("movie_id") id: Long): Single<MoviesDetailsModel>
 }
