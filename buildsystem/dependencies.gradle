@@ -69,6 +69,7 @@ ext {
             junit               : "junit:junit:${junit}",
             assertj             : "org.assertj:assertj-core:${assertJ}",
             mockito             : "org.mockito:mockito-core:${mockito}",
+            mockitoKotlin       : "com.nhaarman:mockito-kotlin-kt1.1:1.5.0",
             archTest            : "android.arch.core:core-testing:${archCompRc1}",
             espressoCore        : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
             espressoIntents     : "com.android.support.test.espresso:espresso-intents:${espressoVersion}",
