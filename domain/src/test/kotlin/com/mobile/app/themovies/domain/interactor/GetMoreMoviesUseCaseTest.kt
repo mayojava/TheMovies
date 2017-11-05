@@ -6,7 +6,7 @@ import com.mobile.app.themovies.domain.repository.IMoviesRepository
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.verifyNoMoreInteractions
 import com.nhaarman.mockito_kotlin.whenever
-import io.reactivex.Flowable
+import io.reactivex.Single
 import io.reactivex.schedulers.TestScheduler
 import org.junit.Before
 import org.junit.Test
@@ -15,36 +15,34 @@ import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class GetMoviesUseCaseTest {
+class GetMoreMoviesUseCaseTest {
     @Mock lateinit var moviesRepository: IMoviesRepository
     @Mock lateinit var schedulersFactory: ISchedulersFactory
 
-    private lateinit var getMoviesUseCase: GetMoviesUseCase
+    private lateinit var getMoreMoviesUseCase: GetMoreMoviesUseCase
     private val testScheduler = TestScheduler()
+    private val page = 2
 
     @Before
     fun setup() {
-        getMoviesUseCase = GetMoviesUseCase(moviesRepository, schedulersFactory)
-        whenever(schedulersFactory.computation()).thenReturn(testScheduler)
+        getMoreMoviesUseCase = GetMoreMoviesUseCase(moviesRepository, schedulersFactory)
         whenever(schedulersFactory.main()).thenReturn(testScheduler)
+        whenever(schedulersFactory.io()).thenReturn(testScheduler)
+        whenever(moviesRepository.fetchMoviesPaginated(page)).thenReturn(Single.just(listOf(createMovie())))
     }
 
     @Test
-    fun shouldFetchMoviesFromRepository() {
-        //Arrange
-        whenever(moviesRepository.getMoviesList()).thenReturn(Flowable.just(listOf(createTestMovie())))
-
-        //Act
-        getMoviesUseCase.build(null)
+    fun shouldGetMoreMoviesFromRepository() {
+        getMoreMoviesUseCase.build(page)
 
         //Assert
-        verify(moviesRepository).getMoviesList()
+        verify(moviesRepository).fetchMoviesPaginated(page)
         verifyNoMoreInteractions(moviesRepository)
     }
 
-    private fun createTestMovie(): Movie {
-        return Movie(1L, 10, false, "Thor", 1.3F,
-                "", "Thor", "", "Thor Ragnarok",
-                "", false)
+    private fun createMovie(): Movie {
+        return Movie(12L, 10, true, "Minnions", 1.3F,
+                "", "Minnions", "", "Minnions",
+                "2017-10-10", false)
     }
 }

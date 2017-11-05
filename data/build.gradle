@@ -49,7 +49,7 @@ dependencies {
     // Unit testing
     testImplementation testDependencies.junit
     testImplementation testDependencies.assertj
-    testImplementation testDependencies.mockito
+    testImplementation testDependencies.mockitoKotlin
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
 repositories {
