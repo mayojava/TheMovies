@@ -13,7 +13,7 @@ data class MovieEntity(
         val popularity: Float,
         val poster_path: String,
         val original_title: String,
-        val backdrop_path: String,
+        val backdrop_path: String?,
         val overview: String,
         val release_date: String,
         val adult: Boolean

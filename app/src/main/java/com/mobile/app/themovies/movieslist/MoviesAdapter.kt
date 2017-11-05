@@ -44,4 +44,11 @@ class MoviesAdapter @Inject constructor(): RecyclerView.Adapter<MoviesAdapter.Vi
             itemView.setOnClickListener { listener(rowViewModel) }
         }
     }
+
+    fun addItems(viewModels: List<MovieRowViewModel>?) {
+        viewModels?.let {
+            items.addAll(it)
+            notifyDataSetChanged()
+        }
+    }
 }

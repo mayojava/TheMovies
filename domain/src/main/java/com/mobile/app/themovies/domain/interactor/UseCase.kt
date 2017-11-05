@@ -34,5 +34,8 @@ abstract class UseCase<out Type, in Param> where Type: Any {
                 disposables.add(build(params).subscribe(onComplete))
 
         fun execute(params: P? = null) = execute({}, params)
+
+        fun execute(onComplete: () -> Unit, onError: (Throwable) -> Unit, params: P? = null) =
+                disposables.add(build(params).subscribe(onComplete, onError))
     }
 }

@@ -48,7 +48,7 @@ class MovieDetailsActivity: AppCompatActivity() {
         text_view_title.text = title
         text_view_description.text = overview
 
-        toolbar.title = title
+        supportActionBar?.title = title
     }
 
     private fun updateMovieDetails(details: MovieDetails?) {
@@ -57,6 +57,6 @@ class MovieDetailsActivity: AppCompatActivity() {
         text_view_movie_genre.text = details?.genres
         text_view_released_date.text = details?.released_date
         text_vote_average.text = details?.vote_average.toString()
-        back_drop_image.fromUrl(details?.backdrop_path ?: "", "w780")
+        back_drop_image.fromUrl(details?.poster_path ?: "", "w780")
     }
 }

@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.View
-import android.widget.Toast
 import com.mobile.app.themovies.R
 import com.mobile.app.themovies.moviesdetails.MovieDetailsActivity
 import dagger.android.AndroidInjection
@@ -33,6 +32,7 @@ class MoviesActivity: AppCompatActivity() {
         setupRecyclerView()
 
         viewModel.getMoviesLiveData().observe(this, observer)
+        viewModel.getMoreMoviesLiveData().observe(this, Observer { showMoreMovies(it) })
     }
 
     private fun createObserver(): Observer<List<MovieRowViewModel>> {
@@ -42,7 +42,8 @@ class MoviesActivity: AppCompatActivity() {
                     loading_progress.visibility = View.VISIBLE
                 } else {
                     loading_progress.visibility = View.GONE
-                    recyclerAdapter.setItems(it)
+                    loadmore.visibility = View.GONE
+                    recyclerAdapter.addItems(it)
                 }
             }
         }
@@ -52,6 +53,22 @@ class MoviesActivity: AppCompatActivity() {
         recycler_view_movies.layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
         recycler_view_movies.adapter = recyclerAdapter
         recyclerAdapter.setItemClickListener { showMovieDetails(it) }
+        recycler_view_movies.addOnScrollListener(object: EndlessRecyclerOnScrollListener() {
+            override fun onLoadMore() {
+                loadMoreMovies()
+            }
+
+        })
+    }
+
+    private fun showMoreMovies(viewModels: List<MovieRowViewModel>?) {
+        loadmore.visibility = View.GONE
+        recyclerAdapter.addItems(viewModels)
+    }
+
+    private fun loadMoreMovies() {
+        loadmore.visibility = View.VISIBLE
+        viewModel.loadMoreMovies()
     }
 
     private fun showMovieDetails(viewModel: MovieRowViewModel) {

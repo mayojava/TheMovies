@@ -40,7 +40,7 @@ class Mapper @Inject constructor(){
 
     fun toMovie(movie: PopularMoviesModel): Movie {
         return Movie(movie.id, movie.vote_count, movie.video, movie.title, movie.popularity,
-                movie.poster_path, movie.original_title, movie.backdrop_path,
+                movie.poster_path, movie.original_title, movie.backdrop_path ,
                 movie.overview, movie.release_date, movie.adult
         )
     }
