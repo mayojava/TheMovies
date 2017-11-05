@@ -11,7 +11,7 @@ data class MovieEntity(
         val video: Boolean,
         val title: String,
         val popularity: Float,
-        val poster_path: String,
+        val poster_path: String?,
         val original_title: String,
         val backdrop_path: String?,
         val overview: String,
