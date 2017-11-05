@@ -48,7 +48,7 @@ dependencies {
     //implementation appDependencies.archLifecycleExtensions
     implementation appDependencies.archLifecycleReactiveStreams
     kapt appDependencies.archLifecycleCompiler
-    testAnnotationProcessor appDependencies.archLifecycleCompiler
+    //testAnnotationProcesso appDependencies.archLifecycleCompiler
 
     implementation appDependencies.picasso
 
@@ -64,7 +64,7 @@ dependencies {
     // Unit testing
     testImplementation testDependencies.junit
     testImplementation testDependencies.assertj
-    testImplementation testDependencies.mockito
+    testImplementation testDependencies.mockitoKotlin
     testCompile testDependencies.archTest
 
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
