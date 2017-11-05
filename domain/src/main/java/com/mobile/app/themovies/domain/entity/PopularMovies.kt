@@ -1,7 +1,7 @@
 package com.mobile.app.themovies.domain.entity
 
- data class Movie(
-        val id: Int,
+data class Movie(
+        val id: Long,
         val vote_count: Int,
         val video: Boolean,
         val title: String,
