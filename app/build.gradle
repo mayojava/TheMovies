@@ -45,7 +45,7 @@ dependencies {
 
     // Architecture components
     implementation appDependencies.archLifecycleRuntime
-    implementation appDependencies.archLifecycleExtensions
+    //implementation appDependencies.archLifecycleExtensions
     implementation appDependencies.archLifecycleReactiveStreams
     kapt appDependencies.archLifecycleCompiler
     testAnnotationProcessor appDependencies.archLifecycleCompiler

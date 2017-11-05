@@ -10,16 +10,9 @@ dependencies {
     def appDependencies = rootProject.ext.appDependencies
     def testDependencies = rootProject.ext.testDependencies
 
-    api appDependencies.options
     api appDependencies.rxJava2
 
     api appDependencies.gson
-
-    compileOnly appDependencies.autoValue
-    provided appDependencies.autoValue
-
-    compileOnly appDependencies.autoValueGson
-    provided appDependencies.autoValueGson
 
     implementation appDependencies.dagger2
     provided appDependencies.dagger2Compiler

@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -41,15 +42,9 @@ dependencies {
     implementation appDependencies.roomRxJava
 
     implementation appDependencies.dagger2
-    annotationProcessor appDependencies.dagger2Compiler
+    kapt appDependencies.dagger2Compiler
 
-    annotationProcessor appDependencies.roomCompiler
-
-    compileOnly appDependencies.autoValue
-    annotationProcessor appDependencies.autoValue
-
-    compileOnly appDependencies.autoValueGson
-    annotationProcessor appDependencies.autoValueGson
+    kapt appDependencies.roomCompiler
 
     // Unit testing
     testImplementation testDependencies.junit

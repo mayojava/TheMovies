@@ -10,10 +10,10 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="256dp"
+        android:layout_height="196dp"
         android:clipChildren="false">
         <ImageView
-            android:id="@+id/comic_thumbnail"
+            android:id="@+id/movie_poster"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
@@ -28,13 +28,13 @@
             android:background="@color/title_layout_bg">
 
             <TextView
-                android:id="@+id/text_view_comic_title"
+                android:id="@+id/text_view_movie_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
-                tools:text="Spider man And his Amazing Friend"/>
+                tools:text="Thor"/>
 
         </LinearLayout>
     </FrameLayout>

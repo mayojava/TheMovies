@@ -36,7 +36,7 @@ class MoviesRepository @Inject constructor(
         return moviesService.getMovies(1)
                 .subscribeOn(schedulerFactory.io())
                 .observeOn(schedulerFactory.computation())
-                .flatMapObservable { Observable.fromIterable(it) }
+                .flatMapObservable { Observable.fromIterable(it.results) }
                 .map { mapper.toMovieEntity(it) }
                 .toList()
                 .doOnSuccess { movieStore.replaceAll(it) }
@@ -45,16 +45,13 @@ class MoviesRepository @Inject constructor(
 
     override fun getMoviesList(): Flowable<List<Movie>> {
         return movieStore.getAll()
-                .flatMapIterable { it -> it}
-                .map { mapper.toMovieFromEntity(it) }
-                .toList()
-                .toFlowable()
+                .map { mapper.toMovieList(it) }
 
     }
 
     override fun fetchMoviesPaginated(page: Int): Single<List<Movie>> {
         return moviesService.getMovies(page)
-                .flatMapObservable { Observable.fromIterable(it) }
+                .flatMapObservable { Observable.fromIterable(it.results) }
                 .map { mapper.toMovie(it) }
                 .toList()
     }

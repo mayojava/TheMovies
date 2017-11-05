@@ -45,11 +45,12 @@ class Mapper @Inject constructor(){
         )
     }
 
-    fun toMovieFromEntity(entity: MovieEntity): Movie {
-        return Movie(entity.id, entity.vote_count, entity.video, entity.title, entity.popularity,
-                entity.poster_path, entity.original_title, entity.backdrop_path,
-                entity.overview, entity.release_date, entity.adult
-        )
+    fun toMovieList(entities: List<MovieEntity>): List<Movie> {
+        val res = mutableListOf<Movie>()
+        entities.forEach {
+            res.add(Movie(it.id, it.vote_count, it.video, it.title, it.popularity, it.poster_path, it.original_title, it.backdrop_path, it.overview, it.release_date, it.adult))
+        }
+        return res
     }
 
     private fun getGenresAsStrings(genres: List<Genres>): String {

@@ -5,13 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.mobile.app.themovies.R
+import com.mobile.app.themovies.util.fromUrl
+import kotlinx.android.synthetic.main.movie_row_item.view.*
 import java.util.*
 import javax.inject.Inject
 
 class MoviesAdapter @Inject constructor(): RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
 
     private var itemClickListener: (MovieRowViewModel) -> Unit = {}
-    private var items: MutableList<MovieRowViewModel> = Collections.emptyList()
+    private var items: MutableList<MovieRowViewModel> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.movie_row_item, parent, false)
@@ -26,7 +28,7 @@ class MoviesAdapter @Inject constructor(): RecyclerView.Adapter<MoviesAdapter.Vi
     }
 
     fun setItemClickListener(listener: (MovieRowViewModel) -> Unit) {
-        this.itemClickListener = itemClickListener
+        this.itemClickListener = listener
     }
 
     fun setItems(items: List<MovieRowViewModel>) {
@@ -37,6 +39,8 @@ class MoviesAdapter @Inject constructor(): RecyclerView.Adapter<MoviesAdapter.Vi
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         fun bind(rowViewModel: MovieRowViewModel, listener: (MovieRowViewModel) -> Unit) {
+            itemView.movie_poster.fromUrl(rowViewModel.poster_path)
+            itemView.text_view_movie_title.text = rowViewModel.title
             itemView.setOnClickListener { listener(rowViewModel) }
         }
     }

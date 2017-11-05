@@ -6,7 +6,7 @@ import android.arch.persistence.room.PrimaryKey
 @Entity(tableName = "movies")
 data class MovieEntity(
         @PrimaryKey
-        val id: Int,
+        val id: Long,
         val vote_count: Int,
         val video: Boolean,
         val title: String,

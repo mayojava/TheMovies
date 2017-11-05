@@ -1,7 +1,7 @@
 package com.mobile.app.data.models
 
 data class PopularMoviesModel(
-        val id: Int,
+        val id: Long,
         val vote_count: Int,
         val video: Boolean,
         val title: String,

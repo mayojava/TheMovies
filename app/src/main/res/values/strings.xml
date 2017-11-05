@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TheMovies</string>
+    <string name="tool_bar_title_movies">Movies</string>
 </resources>
